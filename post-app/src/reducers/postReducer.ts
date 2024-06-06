@@ -1,32 +1,31 @@
-import { Post } from "@/types/postType";
+import { Post } from "@/types/postType"
 
-
-type AddPost = {
-    type: 'add',
+type addPost = {
+    type:'add'
     payload:{
-        title:string,
+        title: string,
         body:string
     }
 }
-type RemoveAction = {
-    type:'remove',
-    payload:{
-        id:number
-    }
+
+type removePost = {
+    type: 'remove',
+    payload:{id:number}
 }
 
-export type PostActions =  AddPost | RemoveAction
+export type PostActions = addPost| removePost
 
-export const PostReducer = (posts: Post[],action:PostActions)=> {
-    switch(action.type){
+export const PostReducer = (posts:Post[],actions:PostActions)=>{
+    switch(actions.type){
         case 'add':
             return [...posts,{
-                id: posts.length,
-                title:action.payload.title,
-                body:action.payload.body
+                id:posts.length,
+                title: actions.payload.title,
+                body: actions.payload.body
             }]
         case 'remove':
-            return posts.filter(item=> item.id !== action.payload.id)
+            return posts.filter(item=> item.id !== actions.payload.id)
+
         default:
             return posts
     }

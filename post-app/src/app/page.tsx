@@ -4,13 +4,14 @@ import { PostAdd } from "@/components/PostAdd"
 import { PostList } from "@/components/PostList"
 import { PostProvider } from "@/contexts/PostContext"
 
+
+
 const Page = ()=>{
   return(
-    <div>
+    <div className="bg-black min-h-screen w-full">
       <PostProvider>
-        <h1>olá</h1>
-        <PostAdd/>
-        <PostList/>
+       <PostAdd/>
+       <PostList/>
       </PostProvider>
     </div>
   )
